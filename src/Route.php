@@ -21,7 +21,9 @@ class Route
     private $ARRAY_CALLABLE_BOOL_KEY = "callable";
     private $ARRAY_FILE_KEY = "file";
     private $ARRAY_CALLABLE_KEY = "function";
+
     private $server_uri;
+    private $supported_methods = array("GET", "POST");
     private $request_method;
     private $script_name;
     private $current_path;
@@ -85,7 +87,7 @@ class Route
     {
         $method = strtoupper($method);
 
-        if ($method != 'POST' || $method != 'GET') {
+        if (!in_array($method, $this->supported_methods)) {
             throw new Exception("Method " . $method . " is not supported.");
         }
 
