@@ -1,4 +1,7 @@
-[![Latest Version](https://img.shields.io/github/release/guzzle/guzzle.svg?style=flat-square)](https://github.com/pushkar-anand/easy-route/releases)
+#**easy-router**
+
+[![Latest Stable Version](https://poser.pugx.org/pushkar/easy-router/v/stable)](https://packagist.org/packages/pushkar/easy-router)
 [![Build Status](https://travis-ci.org/pushkar-anand/easy-router.svg?branch=master)](https://travis-ci.org/pushkar-anand/easy-router)
-[![Packagist](https://img.shields.io/packagist/dt/doctrine/orm.svg)](https://packagist.org/packages/pushkar/easy-router)
+[![Total Downloads](https://poser.pugx.org/pushkar/easy-router/downloads)](https://packagist.org/packages/pushkar/easy-router)
+[![License](https://poser.pugx.org/pushkar/easy-router/license)](https://packagist.org/packages/pushkar/easy-router)
 
