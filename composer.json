@@ -22,7 +22,7 @@
   "autoload": {
     "psr-4":
     {
-      "EasyRouter\\": "src"
+      "EasyRoute\\": "src"
     }
   }
 }
