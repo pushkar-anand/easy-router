@@ -20,8 +20,7 @@
     "phpunit/phpunit": "^7"
   },
   "autoload": {
-    "psr-4":
-    {
+    "psr-4": {
       "EasyRoute\\": "src"
     }
   }

@@ -3,13 +3,11 @@ language: php
 sudo: false
 
 php:
-  - '7.0'
   - '7.1'
   - '7.2'
-  - '7.3'
   - nightly
 
-script: phpunit
+script: ./vendor/bin/phpunit
 
 before_script:
     - composer install
