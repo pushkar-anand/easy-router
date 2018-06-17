@@ -24,6 +24,7 @@ class RouteTest extends TestCase
     public static function tearDownAfterClass()
     {
         unlink("test.php");
+        unlink("value.php");
     }
 
     public function testIsThereAnySyntaxError()
