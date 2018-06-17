@@ -15,6 +15,10 @@ class RouteTest extends TestCase
         $file = fopen("test.php", "w");
         fwrite($file, "<?php echo 'hey'; ?>");
         fclose($file);
+
+        $file = fopen("value.php", "w");
+        fwrite($file, "<?php echo \$param; ?>");
+        fclose($file);
     }
 
     public static function tearDownAfterClass()
@@ -66,5 +70,18 @@ class RouteTest extends TestCase
             echo($exception->getMessage());
         }
     }
+
+    /*public function testValuePass()
+    {
+        $this->expectOutputString('Perfect');
+        try {
+            $param = 'Perfect';
+            $route = new Route();
+            $route->addMatch('GET', '/test', 'value.php');
+            $route->execute();
+        } catch (Exception $exception) {
+            echo($exception->getMessage());
+        }
+    }*/
 
 }

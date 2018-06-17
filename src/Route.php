@@ -21,6 +21,7 @@ class Route
     private $ARRAY_CALLABLE_BOOL_KEY = "callable";
     private $ARRAY_FILE_KEY = "file";
     private $ARRAY_CALLABLE_KEY = "function";
+    private $ARRAY_PARAMS_KEY = "params";
 
     private $server_uri;
     private $supported_methods = array("GET", "POST");
@@ -111,7 +112,7 @@ class Route
                     $this->ARRAY_METHOD_KEY => $method,
                     $this->ARRAY_URI_KEY => $uri,
                     $this->ARRAY_CALLABLE_BOOL_KEY => false,
-                    $this->ARRAY_FILE_KEY => $next
+                    $this->ARRAY_FILE_KEY => $next,
                 );
 
             } else {
@@ -122,7 +123,7 @@ class Route
                         $this->ARRAY_METHOD_KEY => $method,
                         $this->ARRAY_URI_KEY => $uri,
                         $this->ARRAY_CALLABLE_BOOL_KEY => false,
-                        $this->ARRAY_FILE_KEY => $dir_next
+                        $this->ARRAY_FILE_KEY => $dir_next,
                     );
 
                 } else {
@@ -137,6 +138,9 @@ class Route
         array_push($this->match_list, $new_match);
     }
 
+    /**
+     *
+     */
     public function execute()
     {
         if ($this->findMatch()) {
@@ -167,6 +171,16 @@ class Route
                 return true;
             }
         }
+        return false;
+    }
+
+    /**
+     * @param array $params
+     * @return bool
+     */
+    private function areParamsValid(array $params): bool
+    {
+
         return false;
     }
 }
