@@ -82,9 +82,10 @@ class Route
      * @param string $method is the request method.
      * @param string $uri is the uri to be matched.
      * @param string|callable $next is either a file to load or a callable function.
+     * @param string|null $params
      * @throws Exception
      */
-    public function addMatch(string $method, string $uri, $next)
+    public function addMatch(string $method, string $uri, $next, string $params = null)
     {
         $method = strtoupper($method);
 
@@ -94,6 +95,10 @@ class Route
 
         if (!is_string($uri)) {
             throw new Exception("Uri " . $uri . " is not valid.");
+        }
+
+        if (($params != null) && !$this->areParamsValid($params)) {
+            throw new Exception("Parameters supplied is not a valid json.");
         }
 
         if (is_callable($next)) {
@@ -113,6 +118,7 @@ class Route
                     $this->ARRAY_URI_KEY => $uri,
                     $this->ARRAY_CALLABLE_BOOL_KEY => false,
                     $this->ARRAY_FILE_KEY => $next,
+                    $this->ARRAY_PARAMS_KEY => $params
                 );
 
             } else {
@@ -124,6 +130,7 @@ class Route
                         $this->ARRAY_URI_KEY => $uri,
                         $this->ARRAY_CALLABLE_BOOL_KEY => false,
                         $this->ARRAY_FILE_KEY => $dir_next,
+                        $this->ARRAY_PARAMS_KEY => $params
                     );
 
                 } else {
@@ -175,12 +182,24 @@ class Route
     }
 
     /**
-     * @param array $params
+     * This functions checks for the supplied parameters list is valid json.
+     * @param string $params
      * @return bool
      */
-    private function areParamsValid(array $params): bool
+    public function areParamsValid(string $params): bool
     {
+        // 1. Speed up the checking & prevent exception throw when non string is passed
+        if (is_numeric($params) || !is_string($params) || !$params) {
+            return false;
+        }
 
-        return false;
+        $cleaned_str = trim($params);
+        if (!$cleaned_str || !in_array($cleaned_str[0], ['{', '['])) {
+            return false;
+        }
+
+        // 2. Actual checking
+        $str = json_decode($params);
+        return (json_last_error() == JSON_ERROR_NONE) && $str && $str != $params;
     }
 }
