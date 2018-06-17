@@ -112,7 +112,7 @@ class Route
                     $this->ARRAY_METHOD_KEY => $method,
                     $this->ARRAY_URI_KEY => $uri,
                     $this->ARRAY_CALLABLE_BOOL_KEY => false,
-                    $this->ARRAY_FILE_KEY => $next,
+                    $this->ARRAY_FILE_KEY => $next
                 );
 
             } else {
@@ -123,7 +123,7 @@ class Route
                         $this->ARRAY_METHOD_KEY => $method,
                         $this->ARRAY_URI_KEY => $uri,
                         $this->ARRAY_CALLABLE_BOOL_KEY => false,
-                        $this->ARRAY_FILE_KEY => $dir_next,
+                        $this->ARRAY_FILE_KEY => $dir_next
                     );
 
                 } else {
